@@ -21,7 +21,7 @@ jobs:
       - name: Install R dependencies
         if: runner.os == 'Linux'
         run: |
-          install.packages(c("rmarkdown", "jsonlite", "reticulate", "quarto")
+          install.packages(c("rmarkdown", "jsonlite", "reticulate", "quarto"))
         shell: /bin/Rscript {0}
 
       - name: "Install Quarto and render"
