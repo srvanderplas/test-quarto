@@ -28,6 +28,13 @@ jobs:
           install.packages(c("rmarkdown", "jsonlite", "reticulate", "quarto"))
         shell: Rscript {0}
 
+      - name: Setup python virtualenv
+        run: |
+          reticulate::virtualenv_create("testbook", packages = c("matplotlib", "numpy"))
+          reticulate::virtualenv_install("testbook", "numpy",
+              pip_options = c("--no-binary=numpy",  "--force-reinstall"))
+        shell: Rscript {0}
+
       - name: "Install Quarto and render"
         uses: pommevilla/quarto-render@main
 
